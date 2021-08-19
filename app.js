@@ -2,7 +2,7 @@ const cors = require('cors')
 const compression = require('compression')
 const express = require('express')
 const methodOverride = require('method-override')
-const { appTime, globalError } = require('./middlewares/middleware')
+// const { appTime, globalError } = require('./middlewares/middleware')
 require('dotenv').config()
 
 
@@ -19,8 +19,8 @@ app.use(express.static(`${__dirname}/public`))
 app.set('view engine', 'ejs')
 
 // Customs Middleware
-app.use(appTime)
-app.use(compression())
+// app.use(appTime)
+// app.use(compression())
 
 app.use('/', require('./routes/hngRoutes'))
 app.use('/', require('./routes/nodemailer'))
@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
   })
 })
 
-app.use(globalError)
+// app.use(globalError)
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
